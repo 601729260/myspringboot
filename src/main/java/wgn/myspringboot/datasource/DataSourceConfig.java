@@ -68,9 +68,9 @@ public class DataSourceConfig {
         Properties properties=new Properties();
 
         properties.setProperty("druid.name",dataSourceItem.getName());
-        properties.setProperty("druid.url",dataSourceItem.getName());
-        properties.setProperty("druid.username",dataSourceItem.getName());
-        properties.setProperty("druid.password",dataSourceItem.getName());
+        properties.setProperty("druid.url",dataSourceItem.getUrl());
+        properties.setProperty("druid.username",dataSourceItem.getUsername());
+        properties.setProperty("druid.password",dataSourceItem.getPassword());
 
         xaDataSource.configFromPropety(properties);
         // 设置置AtomikosDataSourceBean XADataSource
