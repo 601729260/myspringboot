@@ -1,0 +1,22 @@
+wgn:
+  data:
+    dataSource:
+      dataSourceItems:
+      - master: true
+        name: master
+        password: mamahao
+        url: jdbc:mysql://172.28.1.6:3306/db_gd_dev?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true
+        username: root
+      - master: false
+        name: slave
+        password: mamahao
+        url: jdbc:mysql://172.28.1.6:3306/db_gd_dev?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true
+        username: root
+      - master: false
+        name: mamahaoPos
+        password: mamahao
+        url: jdbc:mysql://172.28.1.6:3306/mamahao_pos?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true
+        username: root
+      autoSwitchDataSource: true
+      defaultDataSourceType: com.alibaba.druid.pool.DruidDataSource
+      defaultDriverClassName: com.mysql.jdbc.Driver
