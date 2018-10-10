@@ -24,12 +24,10 @@ import java.util.Properties;
 @Configuration
 public class DataSourceConfig {
 
-    private static final String PRIMARY_MAPPER_BASE_PACKAGE = "io.github.yidasanqian.mapper.master";
-    private static final String BUSINESS_MAPPER_BASE_PACKAGE = "io.github.yidasanqian.mapper.business";
+    private static final String PRIMARY_MAPPER_BASE_PACKAGE = "wgn.myspringboot.primarymapper";
+    private static final String BUSINESS_MAPPER_BASE_PACKAGE = "wgn.myspringboot.businessmapper";
 
-    private static final String DATASOURCE_DRUID_PROPERTIES = "datasource/druid.properties";
-    private static final String DATASOURCE_DRUID_PRIMARY_PROPERTIES = "datasource/druid-primary.properties";
-    private static final String DATASOURCE_DRUID_BUSINESS_PROPERTIES = "datasource/druid-business.properties";
+
 
     private static final String CLASSPATH_MAPPER_XML = "classpath:mapper/*/*.xml";
 
@@ -100,11 +98,11 @@ public class DataSourceConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        try {
+/*        try {
             sqlSessionFactoryBean.setMapperLocations(resolver.getResources(CLASSPATH_MAPPER_XML));
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
         return sqlSessionFactoryBean;
     }
 
