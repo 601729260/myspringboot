@@ -7,6 +7,7 @@ import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -20,6 +21,7 @@ import java.util.Properties;
  * Time           :   下午5:21
  * Description    :
  */
+@Configuration
 public class DataSourceConfig {
 
     private static final String PRIMARY_MAPPER_BASE_PACKAGE = "io.github.yidasanqian.mapper.master";
@@ -66,6 +68,12 @@ public class DataSourceConfig {
         DruidXADataSource xaDataSource = new DruidXADataSource();
 
         Properties properties=new Properties();
+
+        properties.setProperty("druid.name",dataSourceItem.getName());
+        properties.setProperty("druid.url",dataSourceItem.getName());
+        properties.setProperty("druid.username",dataSourceItem.getName());
+        properties.setProperty("druid.password",dataSourceItem.getName());
+
         xaDataSource.configFromPropety(properties);
         // 设置置AtomikosDataSourceBean XADataSource
         dataSourceBean.setXaDataSource(xaDataSource);
