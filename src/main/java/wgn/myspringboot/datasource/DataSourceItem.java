@@ -15,6 +15,8 @@ public class DataSourceItem {
     private String url;
     private String username;
     private String password;
+    private String basePackage;
+    private String mapperLocations;
 
     public DataSourceItem() {
     }
@@ -67,21 +69,21 @@ public class DataSourceItem {
         this.password = password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DataSourceItem that = (DataSourceItem) o;
-        return isMaster() == that.isMaster() &&
-                Objects.equals(getName(), that.getName()) &&
-                Objects.equals(getUrl(), that.getUrl()) &&
-                Objects.equals(getUsername(), that.getUsername()) &&
-                Objects.equals(getPassword(), that.getPassword());
+    public String getBasePackage() {
+        return basePackage;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getName(), isMaster(), getUrl(), getUsername(), getPassword());
+    public void setBasePackage(String basePackage) {
+        this.basePackage = basePackage;
     }
+
+    public String getMapperLocations() {
+        return mapperLocations;
+    }
+
+    public void setMapperLocations(String mapperLocations) {
+        this.mapperLocations = mapperLocations;
+    }
+
+
 }

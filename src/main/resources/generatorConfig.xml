@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<!--
+      context:生成一组对象的环境
+       id:必选，上下文id，用于在生成错误时提示
+       defaultModelType:指定生成对象的样式
+       1，conditional：类似hierarchical；
+       2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+       3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)    targetRuntime:
+        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+        introspectedColumnImpl：类全限定名，用于扩展MBG
+-->
+
+    <context id="mysqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="wgn.myspringboot.plugin.MapperPlugin">
+          <property name="targetProject" value="../myspringboot/src/main/java"/>
+          <property name="targetPackage" value="wgn.myspringboot.primary.mapper"/>
+            <property name="expandTargetPackage" value="wgn.myspringboot.primary.mapper"/>
+<!--            <property name="voTargetPackage" value="wgn.myspringboot.field"/>
+            <property name="voTargetProject" value="../mamahao-stock-vo/src/main/java"/>-->
+            <property name="entityTargetPackage" value="wgn.myspringboot.primary.entity"/>
+            <property name="entityTargetProject" value="../myspringboot/src/main/java"/>
+
+
+        </plugin>
+
+        <commentGenerator type="wgn.myspringboot.plugin.MyCommentGenerator" >
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.28.1.6:3306/db_gd_dev?nullCatalogMeansCurrent=true" userId="root" password="mamahao">
+        <property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>
+
+        <!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--自动生成的实体的存放包路径 -->
+        <javaModelGenerator targetPackage="wgn.myspringboot.persist.entity"
+                            targetProject="src/main/resources/tmpentity">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--自动生成的*Mapper.xml文件存放路径 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources/tmpmapper">
+            <property name="enableSubPackages" value="true"/>
+
+        </sqlMapGenerator>
+
+        <!--自动生成的*Mapper.java存放路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="wgn.myspringboot.bussiness.mapper" targetProject="src/main/resources/tmpmapper" >
+            <property name="enableSubPackages" value="true"/>
+
+        </javaClientGenerator>
+
+        <table tableName="wgn_tmp" domainObjectName="WgnTmpEntity"></table>
+
+
+    </context>
+
+</generatorConfiguration>
