@@ -1,3 +1,4 @@
+/*
 
 package wgn.myspringboot.datasource;
 
@@ -30,13 +31,15 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
+*/
 /**
  * Company        :   mamahao.com
  * author         :   wangguannan
  * Date           :   2018/10/12
  * Time           :   上午9:53
  * Description    :
- */
+ *//*
+
 
 @Configuration
 public class CustomerBeanRegister implements BeanDefinitionRegistryPostProcessor {
@@ -53,8 +56,7 @@ public class CustomerBeanRegister implements BeanDefinitionRegistryPostProcessor
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         try {
 
-            IDataSourceProperties properties=dataSourceProperties();
-            List<DataSourceItem> dataSourceItems = properties.getDataSourceItems();
+            List<DataSourceItem> dataSourceItems=(List) registry.getBeanDefinition("dataSourceProperties").getPropertyValues().getPropertyValue("dataSourceItems").getValue();
 
             DataSourceItem dataSourceItem1=new DataSourceItem();
 
@@ -106,26 +108,6 @@ public class CustomerBeanRegister implements BeanDefinitionRegistryPostProcessor
                     registry.registerBeanDefinition(sqlSessionFactoryBeanName,SqlSessionFactoryBeanBuilder.getBeanDefinition());
 
 
-                  /*  //初始化SqlSessionFactory
-
-                    String sqlSessionFactoryName=dataSourceItem.getName() + "SqlSessionFactory";
-                    BeanDefinitionBuilder SqlSessionFactoryBuilder =BeanDefinitionBuilder.genericBeanDefinition(SqlSessionFactory.class);
-                    SqlSessionFactoryBuilder.addDependsOn(sqlSessionFactoryBeanName);
-                    registry.registerBeanDefinition(sqlSessionFactoryName,SqlSessionFactoryBuilder.getBeanDefinition());
-
-
-
-
-                    //初始化SqlSessionTemplate
-
-                    String sqlSessionTemplateName=dataSourceItem.getName() + "SqlSessionTemplate";
-
-
-                    BeanDefinitionBuilder SqlSessionTemplateBuilder =BeanDefinitionBuilder.genericBeanDefinition(SqlSessionTemplate.class);
-                    SqlSessionTemplateBuilder.addConstructorArgReference(sqlSessionFactoryName);
-                    registry.registerBeanDefinition(sqlSessionTemplateName,SqlSessionTemplateBuilder.getBeanDefinition());
-
-*/
 
 
                     //初始化mapperScannerConfigurer
@@ -177,3 +159,4 @@ public class CustomerBeanRegister implements BeanDefinitionRegistryPostProcessor
 }
 
 
+*/
